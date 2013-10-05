@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="myTodo">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="dist/css/todo.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+     <script src="dist/js/bootstrap.min.js"></script>
+      <script src="dist/js/todo.js"></script>
+      
+
+  </head>
+  <body ng-controller="MyController">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"> 
+          <h1 class="myTitle"> Pi ToDo </h1>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3"> 
+          <h2 class="addTask"> Add a new task 
+          <a data-toggle="modal" href="#myModal" class="btn btn-info">
+            <span class="glyphicon glyphicon-plus">
+             <span class="addFont"> Add </span>
+            </span> 
+          </a>
+         </h2>
+
+         <div class="modal fade" id="myModal" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-title"> <h4> New task </h4> </div>
+              </div>
+              <div class="modal-body">
+                  <h5> Enter a new task </h5>
+                  <textarea class="form-control" rows="1" ng-model="newTask">  </textarea>
+                  <p class="taskEntered"> {{ newTask }} </p>
+                  <br/>
+                  <h5> Add a note about it </h5> 
+                  <textarea class="form-control" rows="3"> </textarea>
+                  
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="addNewTask()"> <span class="glyphicon glyphicon-ok"> Save </span> </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Close </span> </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="col-md-6 col-md-offset-3 horizontal"/>
+
+    <div class="container">
+      <ul class="list-group col-md-6 col-md-offset-3">
+        <li class="list-group-item taskShown col-md-9 col-md-offset-2" ng-repeat="task in todoList" ng-model-instant>   
+            <span class="mytask col-md-2"> <input type="checkbox" ng-model="task.todoStatus" ng-click="removeTask()">  </input> </span>
+            <span class="no-padding col-md-9"> {{ task.todoItem}}  </span> 
+           
+         
+        </li>
+      </ul>
+    </div>
+   
+            
+    
+   
+  </div>
+   
+  </body>
+</html>
